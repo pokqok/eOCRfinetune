@@ -1,0 +1,35 @@
+train_data: E:/download/final_dataset/train_data
+valid_data: E:/download/final_dataset/valid_data
+data_filtering_off: True
+
+# Model Architecture
+Transformation: TPS
+FeatureExtraction: ResNet
+SequenceModeling: BiLSTM
+Prediction: CTC
+
+# Model Parameters
+imgH: 64
+imgW: 100
+input_channel: 1
+output_channel: 512
+hidden_size: 256
+
+# Training Parameters
+batch_size: 16
+workers: 0
+num_iter: 30000
+valInterval: 1000
+saved_model: E:/download/saved_models/MyFinalModel.pth
+FT: True
+
+# Character Set
+character: E:/download/chars.txt
+
+# Optimizer Settings
+adam: True
+lr: 0.001
+beta1: 0.9
+rho: 0.95
+eps: 0.00000001
+grad_clip: 5

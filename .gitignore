@@ -1,0 +1,12 @@
+# .gitignore
+
+# 가상환경 폴더
+.venv/
+
+# 데이터 및 이미지 폴더
+all_data/images/
+
+# 최종 데이터셋 폴더
+final_dataset/
+
+data_lmdb/

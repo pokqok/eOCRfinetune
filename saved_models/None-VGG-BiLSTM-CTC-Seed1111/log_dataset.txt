@@ -1,0 +1,75 @@
+--------------------------------------------------------------------------------
+dataset_root: ./data_lmdb/train/basic
+opt.select_data: ['basic']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/train/basic	 dataset: basic
+sub-directory:	/.	 num samples: 359811
+num total samples of basic: 359811 x 1.0 (total_data_usage_ratio) = 359811
+num samples of basic per batch: 16 x 1.0 (batch_ratio) = 16
+--------------------------------------------------------------------------------
+Total_batch_size: 16 = 16
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/validation/basic	 dataset: /
+sub-directory:	/.	 num samples: 39980
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: ./data_lmdb/train/basic
+opt.select_data: ['basic']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/train/basic	 dataset: basic
+sub-directory:	/.	 num samples: 359811
+num total samples of basic: 359811 x 1.0 (total_data_usage_ratio) = 359811
+num samples of basic per batch: 16 x 1.0 (batch_ratio) = 16
+--------------------------------------------------------------------------------
+Total_batch_size: 16 = 16
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/validation/basic	 dataset: /
+sub-directory:	/.	 num samples: 39980
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: ./data_lmdb/train/basic
+opt.select_data: ['basic']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/train/basic	 dataset: basic
+sub-directory:	/.	 num samples: 359811
+num total samples of basic: 359811 x 1.0 (total_data_usage_ratio) = 359811
+num samples of basic per batch: 16 x 1.0 (batch_ratio) = 16
+--------------------------------------------------------------------------------
+Total_batch_size: 16 = 16
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/validation/basic	 dataset: /
+sub-directory:	/.	 num samples: 39980
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: ./data_lmdb/train/basic
+opt.select_data: ['basic']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/train/basic	 dataset: basic
+sub-directory:	/.	 num samples: 359811
+num total samples of basic: 359811 x 1.0 (total_data_usage_ratio) = 359811
+num samples of basic per batch: 16 x 1.0 (batch_ratio) = 16
+--------------------------------------------------------------------------------
+Total_batch_size: 16 = 16
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/validation/basic	 dataset: /
+sub-directory:	/.	 num samples: 39980
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: ./data_lmdb/train/basic
+opt.select_data: ['basic']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/train/basic	 dataset: basic
+sub-directory:	/.	 num samples: 359811
+num total samples of basic: 359811 x 1.0 (total_data_usage_ratio) = 359811
+num samples of basic per batch: 16 x 1.0 (batch_ratio) = 16
+--------------------------------------------------------------------------------
+Total_batch_size: 16 = 16
+--------------------------------------------------------------------------------
+dataset_root:    ./data_lmdb/validation/basic	 dataset: /
+sub-directory:	/.	 num samples: 39980
+--------------------------------------------------------------------------------

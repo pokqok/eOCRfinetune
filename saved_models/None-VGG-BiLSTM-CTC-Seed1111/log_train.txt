@@ -1,0 +1,168 @@
+[1/1000] Train loss: 196.87451, Valid loss: 243.00148, Elapsed_time: 0.93946
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+4                         | n52fp207am4t              | 0.0000	False
+                          | w6gftgw6ic6cl             | 0.0001	False
+                          | l0fxcxonyl                | 0.0000	False
+                          | wfcf6lcl                  | 0.0000	False
+9                         | 50f8p7a7fx4t              | 0.0000	False
+--------------------------------------------------------------------------------
+[1/1000] Train loss: 196.87523, Valid loss: 243.00157, Elapsed_time: 1.43724
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+4                         | n52fp207am4t              | 0.0000	False
+                          | w6gftgw6ic6cl             | 0.0001	False
+                          | l0fxcxonyl                | 0.0000	False
+                          | wfcf6lcl                  | 0.0000	False
+9                         | 50f8p7a7fx4t              | 0.0000	False
+--------------------------------------------------------------------------------
+[100/1000] Train loss: 241.36714, Valid loss: 235.89066, Elapsed_time: 308.40525
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | 646f0fkhlt                | 0.0000	False
+3                         | r2le892f9t                | 0.0000	False
+6                         | 0289ko5lt                 | 0.0000	False
+                          | fl9rf05t                  | 0.0000	False
+                          | m4qgtdwl9                 | 0.0072	False
+--------------------------------------------------------------------------------
+[1/1000] Train loss: 196.87523, Valid loss: 243.00162, Elapsed_time: 1.61569
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+4                         | n52fp207am4t              | 0.0000	False
+                          | w6gftgw6ic6cl             | 0.0001	False
+                          | l0fxcxonyl                | 0.0000	False
+                          | wfcf6lcl                  | 0.0000	False
+9                         | 50f8p7a7fx4t              | 0.0000	False
+--------------------------------------------------------------------------------
+[100/1000] Train loss: 241.36717, Valid loss: 235.89116, Elapsed_time: 351.19974
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | 646f0fkhlt                | 0.0000	False
+3                         | r2le892f9t                | 0.0000	False
+6                         | 0289ko5lt                 | 0.0000	False
+                          | fl9rf05t                  | 0.0000	False
+                          | m4qgtdwl9                 | 0.0071	False
+--------------------------------------------------------------------------------
+[200/1000] Train loss: 230.48605, Valid loss: 231.85539, Elapsed_time: 945.49495
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | luldcfyfl9                | 0.0000	False
+                          | hx60fdcylfl9              | 0.0000	False
+                          | 5zrhbl05ltlt              | 0.0000	False
+                          | fgt0q1                    | 0.0000	False
+                          | rmr0fwf0swylfkl           | 0.0000	False
+--------------------------------------------------------------------------------
+[100/1000] Train loss: 241.36699, Valid loss: 235.89148, Elapsed_time: 701.59815
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | 646f0fkhlt                | 0.0000	False
+3                         | r2le892f9t                | 0.0000	False
+6                         | 0289ko5lt                 | 0.0000	False
+                          | fl9rf05t                  | 0.0000	False
+                          | m4qgtdwl9                 | 0.0071	False
+--------------------------------------------------------------------------------
+[200/1000] Train loss: 230.48570, Valid loss: 231.85536, Elapsed_time: 1058.50161
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | luldcfyfl9                | 0.0000	False
+                          | hx60fdcylfl9              | 0.0000	False
+                          | 5zhbl05ltlt               | 0.0000	False
+                          | fgt0q1                    | 0.0000	False
+                          | rmr0fwf0swylfkl           | 0.0000	False
+--------------------------------------------------------------------------------
+[300/1000] Train loss: 228.28278, Valid loss: 226.37810, Elapsed_time: 1639.14457
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | lhal0k4l4t                | 0.0000	False
+6                         | p029lolt                  | 0.0000	False
+                          | 52pgpfp0yfyfl             | 0.0000	False
+7                         | 020p0p0fh4t               | 0.0000	False
+                          | 4r4rfrp0ph                | 0.0003	False
+--------------------------------------------------------------------------------
+[200/1000] Train loss: 230.48607, Valid loss: 231.85559, Elapsed_time: 1346.61641
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | luldcfyfl9                | 0.0000	False
+                          | hx60fdcylfl9              | 0.0000	False
+                          | 5zrhbl05ltlt              | 0.0000	False
+                          | fgt0q1                    | 0.0000	False
+                          | rmr0fwf0swylfkl           | 0.0000	False
+--------------------------------------------------------------------------------
+[300/1000] Train loss: 228.28264, Valid loss: 226.37836, Elapsed_time: 1687.66550
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | lhal0k4l4t                | 0.0000	False
+6                         | p029lolt                  | 0.0000	False
+                          | 52pgpfp0yfyfl             | 0.0000	False
+7                         | 020p0p0fh4t               | 0.0000	False
+                          | 4r4rfrp0ph                | 0.0003	False
+--------------------------------------------------------------------------------
+[400/1000] Train loss: 227.59749, Valid loss: 221.37254, Elapsed_time: 2236.74552
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | fifir460lkl5lt            | 0.0000	False
+987346                    | qcq6su6s                  | 0.0002	False
+                          | r7cpgogzglt               | 0.0000	False
+                          | nd6d9yf0kl4l              | 0.0000	False
+6                         | nso5fphlt                 | 0.0000	False
+--------------------------------------------------------------------------------
+[300/1000] Train loss: 228.28261, Valid loss: 226.37825, Elapsed_time: 1942.14302
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | lhal0k4l4t                | 0.0000	False
+6                         | p029lolt                  | 0.0000	False
+                          | 52pgpfp0yfyfl             | 0.0000	False
+7                         | 020p0p0fh4t               | 0.0000	False
+                          | 4r4rfrp0ph                | 0.0003	False
+--------------------------------------------------------------------------------
+[400/1000] Train loss: 227.59723, Valid loss: 221.37222, Elapsed_time: 2281.39183
+Current_accuracy : 0.000, Current_norm_ED  : 0.01
+Best_accuracy    : 0.000, Best_norm_ED     : 0.01
+--------------------------------------------------------------------------------
+Ground Truth              | Prediction                | Confidence Score & T/F
+--------------------------------------------------------------------------------
+                          | fifir460lkl5lt            | 0.0000	False
+987346                    | qcq6su6s                  | 0.0002	False
+                          | r7cpgogzglt               | 0.0000	False
+                          | nd6d9yf0kl4l              | 0.0000	False
+6                         | nso5fphlt                 | 0.0000	False
+--------------------------------------------------------------------------------

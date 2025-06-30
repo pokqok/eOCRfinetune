@@ -1,0 +1,59 @@
+📁 디렉토리 구조: e:\download
+
+├── all_data
+│   └── images
+├── data_lmdb
+│   ├── train
+│   │   └── basic
+│   └── validation
+│       └── basic
+├── deep-text-recognition-benchmark
+│   ├── demo_image
+│   ├── figures
+│   └── modules
+├── easyocr
+│   ├── easyocr
+│   │   ├── DBNet
+│   │   │   ├── assets
+│   │   │   │   └── ops
+│   │   │   │       └── dcn
+│   │   │   │           ├── functions
+│   │   │   │           ├── modules
+│   │   │   │           └── src
+│   │   │   ├── backbones
+│   │   │   ├── configs
+│   │   │   ├── decoders
+│   │   │   └── model
+│   │   ├── character
+│   │   ├── dict
+│   │   ├── model
+│   │   └── scripts
+│   ├── easyocr.egg-info
+│   ├── examples
+│   ├── scripts
+│   ├── trainer
+│   │   ├── all_data
+│   │   ├── config_files
+│   │   ├── craft
+│   │   │   ├── config
+│   │   │   ├── data
+│   │   │   │   └── pseudo_label
+│   │   │   ├── data_root_dir
+│   │   │   ├── exp
+│   │   │   ├── loss
+│   │   │   ├── metrics
+│   │   │   ├── model
+│   │   │   ├── scripts
+│   │   │   └── utils
+│   │   ├── modules
+│   │   └── saved_models
+│   └── unit_test
+│       └── data
+├── final_dataset
+│   ├── train_data
+│   │   └── images
+│   └── valid_data
+│       └── images
+├── saved_models
+│   └── TPS-ResNet-BiLSTM-CTC-Seed1111
+└── user_network
