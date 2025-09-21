@@ -1,105 +1,104 @@
-# eOCRfinetune: 부동산 계약서 OCR을 위한 EasyOCR 파인튜닝
+# SafeSign: AI-OCR 기반 부동산 계약서 분석 및 위험 고지 시스템
 
-이 프로젝트는 등기부등본, 임대차계약서 등 한국 부동산 관련 문서에 특화된 단어를 더 정확하게 인식하기 위해 EasyOCR 모델을 파인튜닝한 것입니다. 특정 도메인의 어휘에 대한 OCR 정확도를 높이는 것을 목표로 합니다.
+본 프로젝트는 부동산 계약서(등기부등본, 임대차계약서 등) 이미지를 분석하여 핵심 정보를 추출하고, 생성 AI를 통해 사용자에게 잠재적 위험 요소를 요약 및 고지하는 서비스 SafeSign의 핵심 OCR 엔진을 개발하는 것을 목표로 합니다.
 
-파인튜닝에 사용된 베이스 모델은 `facebook/m2m100_1.2B` 입니다.
+이 저장소는 전체 시스템 중 문자 인식을 담당하는 OCR 모델을 개발하고 최적화하는 과정을 담고 있습니다.
 
-## 저장소 구조
+##  전체 시스템 아키텍처
 
+SafeSign 서비스의 이미지 인식 워크플로우는 3단계 파이프라인으로 구성됩니다.
+
+1.  **이미지 전처리:** 입력된 문서 이미지의 노이즈를 제거하고 명암을 보정하여 OCR 인식률을 높입니다.
+2.  **OCR 인식 (본 프로젝트):** 전처리된 이미지에서 텍스트를 추출합니다.
+3.  **LLM 후처리 및 요약:** 추출된 텍스트를 Gemini 모델에 전달하여, 최종적으로 구조화된 형식의 요약문을 생성하고 위험 요소를 분석합니다.
+
+이 구조에서 OCR의 정확도는 전체 시스템의 신뢰도를 결정하는 가장 중요한 요소입니다. 특히 숫자, 주소, 이름과 같이 LLM이 스스로 수정할 수 없는 핵심 정보(Fact)의 인식 정확도를 극대화하는 것을 목표로 합니다.
+
+##  모델 개발 및 성능 평가
+
+최적의 OCR 엔진을 찾기 위해, 기본 모델(Baseline)을 포함하여 총 7개의 모델에 대한 체계적인 성능 평가를 진행했습니다. 파인튜닝은 CRNN (VGG-BiLSTM-CTC) 아키텍처를 기반으로 수행했습니다.
+
+### 주요 모델 개발 전략
+
+-   **(Model 1) Baseline:** EasyOCR의 korean_g2 사전 학습 모델
+-   **(Model 3) 일반 데이터:** AI-Hub 한글 OCR 데이터 등 다양한 일반 데이터셋으로 파인튜닝
+-   **(Model 5) 최종 모델:** Model 3에 실제 계약서 및 등기부등본 데이터를 대량으로 추가하여 파인튜닝 (도메인 특화)
+-   **(Model 6) 생성 데이터:** 스크립트로 가상 생성한 계약서 관련 텍스트 이미지로 파인튜닝
+-   **(Model 7) 외부 모델:** 공공행정문서를 학습시킨 외부 파인튜닝 모델
+
+### 최종 평가 결과
+
+| 순위 | 모델 | 핵심 전략 | Cleaned CER (↓) | 요약 정확도 (↑) |
+| :--- | :--- | :--- | :--- | :--- |
+| 🏆 1 | Model 5 | 계약서 데이터 추가 | 0.2033 | 82.42% |
+| 2 | Model 7 | 외부 파인튜닝 | 0.1588 | 80.67% |
+| 3 | Model 1 | Baseline | 0.1731 | 80.33% |
+
+[Sheets로 내보내기]
+
+**결론:** 단순 문자 오류율(CER)은 외부 모델(Model 7)이 가장 낮았으나, 실제 계약서의 **핵심 정보를 추출하고 구조를 이해하는 능력(요약 정확도)**은 직접 파인튜닝한 Model 5가 가장 뛰어났습니다. 이는 사소한 오타를 일부 포함하더라도 "보증금", "계약일"과 같은 핵심 정보를 틀리지 않는 능력이 실제 서비스의 가치를 결정한다는 것을 보여줍니다.
+
+## 🛠 트러블 슈팅 및 교훈 (Lessons Learned)
+
+이번 프로젝트를 통해 성능 개선에 실패했던 경험과 그로부터 얻은 중요한 교훈은 다음과 같습니다.
+
+### 1. 실패 사례: 학습 과정 모니터링의 부재 (Model 2)
+
+**문제점:**
+파인튜닝 과정에서 학습 초반부터 정확도(Accuracy)가 0%대에 머무는 것을 인지하지 못하고 학습을 완료했습니다. 그 결과, 모델은 문자 인식이 거의 불가능한 수준의 결과를 출력했습니다.
+
+**교훈:**
+단순히 스크립트를 실행하는 것을 넘어, 학습 과정의 핵심 지표(Loss, Accuracy)를 실시간으로 모니터링하여 학습이 정상적으로 진행되고 있는지 반드시 확인해야 함을 깨달았습니다.
+
+### 2. 실패 사례: 데이터 불균형으로 인한 과적합 (Model 6)
+
+**문제점:**
+계약서에 자주 등장하는 숫자, 전화번호 등 특정 패턴의 데이터를 스크립트로 대량 생성(70만 개)하여 학습시켰습니다. 그 결과, 모델이 생성 데이터에 과적합(Overfitting)되어, 일반적인 한글 단어조차 숫자로 잘못 인식하는 문제(예: '가' -> '4')가 발생했습니다.
+
+**교훈:**
+데이터의 절대적인 양뿐만 아니라, 일반 텍스트와 특정 패턴 데이터 간의 균형이 매우 중요함을 확인했습니다. 무조건 많은 데이터를 사용하는 것보다, 다양한 종류의 데이터가 균형 잡힌 데이터셋을 구축하는 것이 모델의 일반화 성능에 더 효과적입니다.
+
+##  직접 파인튜닝하는 방법
+
+### 1. 데이터셋 준비
+
+학습 및 검증에 사용할 이미지와 라벨 파일(labels.csv)을 각각 `data/train`과 `data/validation` 폴더에 위치시킵니다.
+
+### 2. 학습 스크립트 실행
+
+`eOCR_finetune.py` 스크립트를 필요한 인자와 함께 실행합니다.
+
+```bash
+python eocr_finetune.py \
+--train_data ./data/train \
+--valid_data ./data/validation \
+--Transformation None \
+--FeatureExtraction VGG \
+--SequenceModeling BiLSTM \
+--Prediction CTC \
+--sensitive \
+--character "인식할 모든 글자 집합" \
+--saved_model ./saved_models/MyModel/MyModel.pth
 ```
-eOCRfinetune/
-├── data/                  # 학습 및 검증용 데이터셋
-│   ├── train/
-│   └── validation/
-├── saved_models/          # 파인튜닝된 모델이 저장되는 폴더
-├── eOCR_finetune.py       # 메인 파인튜닝 스크립트
-├── requirements.txt       # 실행에 필요한 패키지 목록
-├── ... (기타 데이터 처리용 .py 스크립트들)
-└── README.md              # 프로젝트 설명 파일
-```
 
-## 주요 기능
+##  파인튜닝된 모델 사용법
 
--   **특화된 어휘 인식**: 등기부등본, 임대차계약서 등 법률 및 부동산 관련 문서에 자주 등장하는 용어, 이름, 숫자 인식에 최적화되었습니다.
--   **정확도 향상**: 기존 EasyOCR 모델 대비 특정 문서에서의 글자 인식률이 향상되었습니다.
--   **간편한 사용법**: 파인튜닝된 모델을 EasyOCR 프레임워크 내에서 쉽게 불러와 사용할 수 있습니다.
-
-## 설치 방법
-
-1.  **저장소 복제 (Clone)**
-    ```bash
-git clone https://github.com/pokqok/eOCRfinetune.git
-cd eOCRfinetune
-    ```
-
-2.  **필요 패키지 설치**
-    가상 환경(virtual environment) 사용을 권장합니다.
-    ```bash
-pip install -r requirements.txt
-    ```
-
-## 파인튜닝된 모델 사용법
-
-EasyOCR의 `Reader` 클래스를 사용하여 파인튜닝된 모델을 간단하게 불러올 수 있습니다. 모델 파일(.pth, .yaml)이 저장된 폴더 경로를 지정하기만 하면 됩니다.
+`easyocr.Reader` 클래스를 사용하여 파인튜닝된 모델을 불러올 수 있습니다.
 
 ```python
 import easyocr
 
-# 파인튜닝된 모델 파일들이 들어있는 폴더 경로
-model_path = './saved_models/ko_g2_new'
+# 파인튜닝된 모델 파일들이 들어있는 '폴더' 경로
+custom_model_directory = './saved_models/MyModel'
 
-# 모델 불러오기
-# gpu=True 또는 False로 설정하여 GPU 사용 여부를 정할 수 있습니다.
-reader = easyocr.Reader(['ko'], model_storage_directory=model_path, gpu=True)
+# 커스텀 모델 불러오기
+reader = easyocr.Reader(
+    ['ko'],
+    model_storage_directory=custom_model_directory,
+    user_network_directory=custom_model_directory,
+    gpu=True
+)
 
 # 이미지 파일로 OCR 실행
-image_path = '경로/입력할/이미지파일.png'
-result = reader.readtext(image_path)
-
-# 결과 출력
-for (bbox, text, prob) in result:
-    print(f'인식된 글자: "{text}", 신뢰도: {prob:.4f}')
+result = reader.readtext('image.png')
 ```
-
-## 직접 파인튜닝하는 방법
-
-1.  **데이터셋 준비**
-    학습 및 검증에 사용할 이미지와 라벨 파일(`labels.csv`)을 각각 `data/train`과 `data/validation` 폴더에 위치시킵니다. 데이터 구조는 파인튜닝 스크립트가 요구하는 형식을 따라야 합니다.
-
-2.  **학습 스크립트 실행**
-    `eOCR_finetune.py` 스크립트를 필요한 인자(argument)와 함께 실행합니다.
-
-    ```bash
-python eocr_finetune.py \
-    --train_data ./data/train \
-    --valid_data ./data/validation \
-    --Transformation None \
-    --FeatureExtraction VGG \
-    --Prediction CTC \
-    --SequenceModeling BiLSTM \
-    --sensitive \
-    --character "0123456789가강개객건게겨계고공과관광구규권근금기길김나남대더도동등라로록리마매명목물미및바박배백버번베보부북사산삼상서선설성세소수시신아안양어업에여역연영예오옥용우원월유윤을음의이인임입자작장재전정제조종주중지직차채천청초최추충치타토파판평포하학한함합항해행향현호화확황효후" \
-    --saved_model ./saved_models/ko_g2_new/korean_g2.pth
-    ```
-
-### 주요 인자 설명
-
--   `--train_data`: 학습 데이터셋 경로
--   `--valid_data`: 검증 데이터셋 경로
--   `--character`: 모델이 인식해야 할 모든 글자 집합
--   `--saved_model`: 학습이 완료된 모델이 저장될 경로와 파일명
-
-## 기타 유틸리티 스크립트
-
-메인 파인튜닝 스크립트(`eOCR_finetune.py`) 외에 포함된 여러 `.py` 파일들은 파인튜닝 과정에서 데이터를 준비하고 정리하기 위해 사용된 보조 스크립트들입니다.
-
--   `make_label.py`: 이미지 파일 이름에 기반하여 학습에 필요한 `labels.csv` 파일을 생성합니다.
--   `rename_file.py`: 데이터 파일들의 이름을 일괄적으로 변경합니다.
--   `move_file.py`, `random_file.py`: 데이터셋 분리나 정리를 위해 파일을 이동시키거나 무작위로 섞는 작업을 수행합니다.
--   `remove_word.py`, `split_word.py`: 라벨 데이터에서 특정 단어를 제거하거나 분리하는 등 텍스트 전처리 작업을 합니다.
-
-필요에 따라 이 스크립트들을 사용하여 자신만의 데이터셋을 구축하고 전처리할 수 있습니다.
-
-## 감사의 말
-
-이 프로젝트는 강력하고 유연한 [EasyOCR](https://github.com/JaidedAI/EasyOCR) 라이브러리를 기반으로 제작되었습니다.
